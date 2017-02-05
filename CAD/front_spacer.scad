@@ -27,11 +27,11 @@ difference() {
     translate([-m3_nuts_width*2,0,0])
     cube([width, spacing, thickness]);
 
-    translate([-m3s_d,-(m3s_d + support_hole_distance),0])    
-    cube([m3s_d*2, m3s_d + support_hole_distance,thickness]);
+    translate([-width/4,-(m3s_d + support_hole_distance),0])    
+    cube([width/2, m3s_d + support_hole_distance,thickness]);
     
-    translate([-m3s_d,spacing,0])    
-    cube([m3s_d*2, m3s_d + support_hole_distance,thickness]);
+    translate([-width/4,spacing,0])    
+    cube([width/2, m3s_d + support_hole_distance,thickness]);
   }
   
   // Arm join holes
