@@ -1,10 +1,7 @@
-m3s_d = 3.4;
-m3s_dh = 6;
-m3s_hh = 2;
+include<common.scad>
 
 m3_nuts_width = 5.7;
 m3_nuts_height = 6.4;
-
 
 thickness = 3;
 
@@ -20,6 +17,9 @@ spacing = 40.6;
 support_hole_distance = 3.9;
 
 
+echo(m3_screw_diameter + support_hole_distance);
+
+
 difference() {
   
   union() {
@@ -27,27 +27,27 @@ difference() {
     translate([-m3_nuts_width*2,0,0])
     cube([width, spacing, thickness]);
 
-    translate([-width/4,-(m3s_d + support_hole_distance),0])    
-    cube([width/2, m3s_d + support_hole_distance,thickness]);
+    translate([-width/4,-(m3_screw_diameter + support_hole_distance),0])    
+    cube([width/2, m3_screw_diameter + support_hole_distance,thickness]);
     
     translate([-width/4,spacing,0])    
-    cube([width/2, m3s_d + support_hole_distance,thickness]);
+    cube([width/2, m3_screw_diameter + support_hole_distance,thickness]);
   }
   
   // Arm join holes
   union () {
 
     translate([-m3_nuts_width, arm_join_height, 0])     
-    cylinder(d=m3s_d, h=thickness, $fn=100);
+    cylinder(d=m3_screw_diameter, h=thickness, $fn=100);
 
     translate([m3_nuts_width, arm_join_height, 0])
-    cylinder(d=m3s_d, h=thickness, $fn=100);
+    cylinder(d=m3_screw_diameter, h=thickness, $fn=100);
     
     translate([0,-support_hole_distance,0])    
-    cylinder(d=m3s_d, h=thickness, $fn=100);
+    cylinder(d=m3_screw_diameter, h=thickness, $fn=100);
     
     translate([0,support_hole_distance+spacing,0])    
-    cylinder(d=m3s_d, h=thickness, $fn=100);
+    cylinder(d=m3_screw_diameter, h=thickness, $fn=100);
     
     translate([0,(spacing+arm_join_height)/2,0])    
     cylinder(d=width-border_clearance*1.5, h=thickness, $fn=100);
